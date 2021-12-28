@@ -17,13 +17,11 @@ public class SplashActivity extends AppCompatActivity {
 
     //private Toolbar toolbar;
     private ImageView logoImage;
-    private Button titleButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         logoImage=findViewById(R.id.logoImage);
-        titleButton=findViewById(R.id.title_Button);
 
 
         startAnimation();
@@ -50,15 +48,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         };
         logoAnimation.start();
-        /*Thread titleAnimation=new Thread(){
-            @Override
-            public void run(){
-
-                Animation animation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_into_logo);
-                titleButton.startAnimation(animation);
-            }
-        };
-        titleAnimation.start();*/
         Thread redirect=new Thread(){
             @Override
             public void run(){

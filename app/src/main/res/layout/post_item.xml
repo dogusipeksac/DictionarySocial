@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="15dp"
+    app:cardCornerRadius="3dp"
+
+    android:elevation="10dp"
+    app:cardElevation="10dp"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+
+
+        <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="60dp"
+        android:src="@drawable/ic_people"
+        android:layout_height="60dp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            android:layout_toEndOf="@id/profile_image"
+            android:text="Dogus ipeksac" />
+        <TextView
+            android:layout_below="@id/username"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="15sp"
+            android:layout_marginStart="5dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/profile_image"
+            android:text="English(C1)"/>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_image"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Red(Kırmızı),White(Beyaz)"
+            android:textColor="@color/black"
+            android:textSize="25sp"/>
+        <View
+            android:id="@+id/view_separate"
+            android:layout_below="@id/description"
+            android:layout_width="match_parent"
+            android:background="@color/hint_color"
+            android:layout_height="2dp"/>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/view_separate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/ic_like"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"/>
+
+            <ImageView
+                android:src="@drawable/ic_dislike"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"/>
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

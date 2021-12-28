@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostActivity">
+
+    <RelativeLayout
+        android:id="@+id/title_Button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:background="@drawable/app_bar_background"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Post"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/profile_image_post"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/title_Button"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/ic_people" />
+
+    <TextView
+        android:id="@+id/username_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_Button"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/profile_image_post"
+        android:text="Dogus ipeksac"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username_post"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@id/profile_image_post" />
+
+    <TextView
+        android:id="@+id/ask_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_image_post"
+        android:layout_marginHorizontal="20dp"
+        android:text="What did learn today? "
+        android:textSize="20sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@id/ask_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:id="@+id/text_layout"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/description_edittext"
+            android:layout_width="match_parent"
+            android:hint="Say something."
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:minLines="6"
+            android:gravity="start"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_height="200dp"
+            android:scrollbars="vertical"
+            android:textColorHint="#E5E5E5" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/shared_Button"
+        android:layout_below="@id/text_layout"
+        android:layout_width="match_parent"
+        android:text="Shared"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:background="@drawable/button_background"
+        android:layout_height="wrap_content"
+        />
+</RelativeLayout>

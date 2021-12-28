@@ -17,4 +17,11 @@
         <item name="boxStrokeColor">#E5E5E5</item>
         <item name="android:textColor">#E5E5E5</item>
     </style>
+    <style name="Theme.DictionarySocial.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.DictionarySocial.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.DictionarySocial.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

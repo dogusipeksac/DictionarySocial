@@ -11,15 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DictionarySocial">
         <activity
+            android:name=".PostActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
-            android:resizeableActivity="true"
             android:exported="true"
+            android:resizeableActivity="true"
             tools:targetApi="n" />
         <activity
             android:name=".RegisterActivity"
-            android:resizeableActivity="true"
-
             android:exported="true"
+            android:resizeableActivity="true"
             tools:targetApi="n" />
         <activity
             android:name=".SplashActivity"
