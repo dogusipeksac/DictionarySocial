@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DictionarySocial</string>
+    <string name="welcome">Welcome</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="do_you_have_a_account">Do you have a account?</string>
+    <string name="go_to_login"><u>Go to login.</u> </string>
+    <string name="you_don_t_have_a_account"><u>You don\'t have a account?</u></string>
+</resources>
