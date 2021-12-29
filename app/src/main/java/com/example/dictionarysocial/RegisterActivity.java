@@ -2,12 +2,14 @@ package com.example.dictionarysocial;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.dictionarysocial.Service.Firebase.Authentication;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -15,6 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView gotologin;
     private Button register_button;
     boolean isAllFieldsChecked = false;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +36,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
     public void CheckRegister(){
         register_button.setOnClickListener(v -> {
+            /*progressDialog=new ProgressDialog(RegisterActivity.this);
+            progressDialog.setMessage("Please wait..");
+            progressDialog.show();*/
             isAllFieldsChecked = CheckAllFields();
             if (isAllFieldsChecked) {
-                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(i);
+                String e_mail=email.getText().toString();
+                String user_name=username.getText().toString();
+                String passwords=password.getText().toString();
+                Authentication.get(RegisterActivity.this).register(e_mail,passwords,user_name);
             }
         });
     }

@@ -4,14 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.dictionarysocial.Adapter.SpinnerAdapter;
-import com.example.dictionarysocial.Service.JsonService;
+import com.example.dictionarysocial.Service.Firebase.LocalJson.JsonService;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;

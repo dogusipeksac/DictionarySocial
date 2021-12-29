@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterContinueActivity">
+    <RelativeLayout
+        android:id="@+id/title_Button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:background="@drawable/app_bar_background"
+        >
+        <TextView
+            android:text="Register Continue"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:gravity="center"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/user_image"
+        android:src="@drawable/ic_people"
+        android:layout_below="@id/title_Button"
+        android:layout_width="120dp"
+        android:layout_height="120dp"/>
+
+    <ImageView
+        android:id="@+id/chose_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-15dp"
+        android:src="@drawable/ic_collections" />
+
+</RelativeLayout>

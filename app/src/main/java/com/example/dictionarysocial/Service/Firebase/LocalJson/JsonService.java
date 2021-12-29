@@ -1,4 +1,4 @@
-package com.example.dictionarysocial.Service;
+package com.example.dictionarysocial.Service.Firebase.LocalJson;
 
 import android.content.Context;
 
@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class JsonService {
     private static JsonService jsonService;
