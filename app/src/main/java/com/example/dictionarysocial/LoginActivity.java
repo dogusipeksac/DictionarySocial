@@ -1,13 +1,17 @@
 package com.example.dictionarysocial;
 
+import static com.example.dictionarysocial.Service.Firebase.Authentication.loginDone;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.dictionarysocial.Service.Firebase.Authentication;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
@@ -18,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView goto_register;
     private Button login_button;
     boolean isAllFieldsChecked = false;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +43,23 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener(v -> {
             isAllFieldsChecked = CheckAllFields();
             if (isAllFieldsChecked) {
-                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(i);
+                progressDialog=new ProgressDialog(LoginActivity.this);
+                progressDialog.setMessage("Please wait..");
+                progressDialog.show();
+                String e_mail=email.getText().toString();
+                String pass_word=password.getText().toString();
+                Authentication.get(this).login(e_mail,pass_word);
+                if (loginDone)
+                progressDialog.dismiss();
+
+
             }
         });
 
 
 
     }
+
     private boolean CheckAllFields() {
         if (email.length() == 0 && password.length() == 0) {
             email.setError("Email is required");

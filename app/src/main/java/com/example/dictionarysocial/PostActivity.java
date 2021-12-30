@@ -9,19 +9,20 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.dictionarysocial.Adapter.SpinnerAdapter;
+import com.example.dictionarysocial.Adapter.LanguageSpinnerAdapter;
 import com.example.dictionarysocial.Service.Firebase.LocalJson.JsonService;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 
 public class PostActivity extends AppCompatActivity {
-    private SpinnerAdapter spinnerAdapter;
+
     private Spinner spinner;
     private ImageView user_imageView,back_imageView;
     private TextView user_name;
     private TextInputEditText descriptionEditText;
     private Button button_shared;
+    private LanguageSpinnerAdapter spinnerAdapter;
     private ArrayList<String> spinnerList;
 
 
@@ -36,7 +37,7 @@ public class PostActivity extends AppCompatActivity {
         button_shared=findViewById(R.id.shared_Button);
         back_imageView=findViewById(R.id.back);
         spinnerList= JsonService.get(this).getJsonFileFromLocallyData();
-        spinnerAdapter=new SpinnerAdapter(this,spinnerList);
+        spinnerAdapter=new LanguageSpinnerAdapter(this,spinnerList);
         spinner.setAdapter(spinnerAdapter);
         back_imageView.setOnClickListener(v -> {
             Intent intent=new Intent(this,HomeActivity.class);

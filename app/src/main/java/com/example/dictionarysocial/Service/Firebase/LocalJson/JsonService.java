@@ -9,11 +9,16 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class JsonService {
     private static JsonService jsonService;
     private static Context context;
-    private ArrayList<String> list;
+    private ArrayList<String> languageList;
+    private ArrayList<String> levelList;
+    private String languageJson="language.json";
+    private String languageLevelJson="language_level.json";
+
     //singleton
     public static JsonService get(Context context){
         if (jsonService==null){
@@ -23,7 +28,8 @@ public class JsonService {
     }
     private JsonService(Context context) {
         this.context = context;
-        list=new ArrayList<>();
+
+
     }
 
     //local json için yol
@@ -43,21 +49,40 @@ public class JsonService {
         return json;
     }
     public ArrayList<String> getJsonFileFromLocallyData() {
+        languageList=new ArrayList<>();
         try {
-            JSONObject obj =(JSONObject) new JSONObject(loadJSONFromAsset("language.json"));
+            JSONObject obj =new JSONObject(Objects.requireNonNull(loadJSONFromAsset(languageJson)));
             JSONArray jsonArrayList= obj.getJSONArray("Language");
 
             for(int i=0;i<jsonArrayList.length();i++){
                 JSONObject object=jsonArrayList.getJSONObject(i);
                 String objectItem=object.getString("name");
-                list.add(objectItem);
+                languageList.add(objectItem);
             }
 
             // for
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return list;
+        return languageList;
+    }
+    public ArrayList<String> getJsonFileFromLocallyDataLevel(){
+        levelList=new ArrayList<>();
+        try {
+            JSONObject obj =new JSONObject(Objects.requireNonNull(loadJSONFromAsset(languageLevelJson)));
+            JSONArray jsonArrayList= obj.getJSONArray("Language_level");
+
+            for(int i=0;i<jsonArrayList.length();i++){
+                JSONObject object=jsonArrayList.getJSONObject(i);
+                String objectItem=object.getString("level");
+                levelList.add(objectItem);
+            }
+
+            // for
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return levelList;
     }
 
 }

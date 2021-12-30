@@ -1,5 +1,7 @@
 package com.example.dictionarysocial;
 
+import static com.example.dictionarysocial.Service.Firebase.Dao.UserDao.registerDone;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -41,10 +43,15 @@ public class RegisterActivity extends AppCompatActivity {
             progressDialog.show();*/
             isAllFieldsChecked = CheckAllFields();
             if (isAllFieldsChecked) {
+                progressDialog=new ProgressDialog(RegisterActivity.this);
+                progressDialog.setMessage("Please wait..");
+                progressDialog.show();
                 String e_mail=email.getText().toString();
                 String user_name=username.getText().toString();
                 String passwords=password.getText().toString();
                 Authentication.get(RegisterActivity.this).register(e_mail,passwords,user_name);
+                if(registerDone)
+                progressDialog.dismiss();
             }
         });
     }

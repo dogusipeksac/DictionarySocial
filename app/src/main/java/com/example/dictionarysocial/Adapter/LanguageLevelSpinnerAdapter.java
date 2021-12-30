@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,9 +14,9 @@ import com.example.dictionarysocial.R;
 
 import java.util.ArrayList;
 
-public class SpinnerAdapter extends ArrayAdapter<String> {
+public class LanguageLevelSpinnerAdapter extends ArrayAdapter<String> {
 
-    public SpinnerAdapter(Context context, ArrayList<String> languageArrayList) {
+    public LanguageLevelSpinnerAdapter(Context context, ArrayList<String> languageArrayList) {
         super(context, 0,languageArrayList);
     }
 
@@ -37,10 +36,10 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
     }
     private View initView(int position,View convertView,ViewGroup parent){
         if(convertView==null){
-            convertView= LayoutInflater.from(getContext()).inflate(R.layout.language_spinner_item,
+            convertView= LayoutInflater.from(getContext()).inflate(R.layout.language_level_spinner_item,
                     parent,false);
         }
-        TextView textViewTitle=convertView.findViewById(R.id.text_spinner_title);
+        TextView textViewTitle=convertView.findViewById(R.id.level_spinner_title);
         String languageItem=getItem(position);
         if(languageItem!=null){
             textViewTitle.setText(languageItem);

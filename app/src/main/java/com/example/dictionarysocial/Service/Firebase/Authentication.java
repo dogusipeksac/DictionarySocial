@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import com.example.dictionarysocial.HomeActivity;
 import com.example.dictionarysocial.Service.Firebase.Dao.UserDao;
 import com.example.dictionarysocial.Util.PasswordHelper;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -16,20 +18,25 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.Objects;
 
 public class Authentication {
     private FirebaseAuth auth;
     private Context context;
     //data okumak için
-    private FirebaseDatabase database;
+    FirebaseFirestore db;
 
-    private boolean activityFinish;
+    public static boolean activityFinish;
+    public static boolean loginDone;
 
 
     public Authentication(Context context) {
         this.auth =FirebaseAuth.getInstance();
         this.context=context;
-        this.database=FirebaseDatabase.getInstance();
+        db=FirebaseFirestore.getInstance();
 
     }
     private static Authentication authentication;
@@ -39,6 +46,7 @@ public class Authentication {
         }
         return authentication;
     }
+
 
 
     public void register(String email,
@@ -65,6 +73,7 @@ public class Authentication {
                     else{
                         Toast.makeText(context, "You can't register with"+task.getException(), Toast.LENGTH_SHORT).show();
                     }
+
                 });
 
     }
@@ -77,30 +86,28 @@ public class Authentication {
         assert encryptionPassword != null;
         auth.signInWithEmailAndPassword(email,encryptionPassword).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
-                DatabaseReference reference=database.getReference().child("Users")
-                        .child(auth.getCurrentUser().getUid());
-                reference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+               db.collection("Users").document(Objects.requireNonNull(auth.getUid())).get().addOnCompleteListener(task1 -> {
+                   if(task1.isSuccessful()){
 
-                        Intent intent=new Intent(context,HomeActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                        setActivityFinish(true);
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                       Intent intent=new Intent(context,HomeActivity.class);
+                       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                               Intent.FLAG_ACTIVITY_NEW_TASK);
+                       context.startActivity(intent);
+                       setActivityFinish(true);
+                       loginDone=true;
+                   }
+                   else{
+                       Toast.makeText(context, "Authentication failed", Toast.LENGTH_SHORT).show();
+                   }
+               });
 
             }else{
                 Toast.makeText(context, "Authentication failed", Toast.LENGTH_SHORT).show();
             }
+
         });
+
+
     }
     public boolean isActivityFinish() {
         return activityFinish;
@@ -109,4 +116,5 @@ public class Authentication {
     public void setActivityFinish(boolean activityFinish) {
         this.activityFinish = activityFinish;
     }
+
 }

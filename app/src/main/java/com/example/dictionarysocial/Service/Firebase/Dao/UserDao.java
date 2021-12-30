@@ -15,6 +15,7 @@ public class UserDao {
     private FirebaseFirestore db;
 
     private static UserDao userDao;
+    public static boolean registerDone;
 
     //singleton
     public static UserDao get(Context context){
@@ -37,6 +38,7 @@ public class UserDao {
                                           String description,
                                           String language,
                                           String language_level){
+
         Map<String, Object> user = new HashMap<>();
         user.put("id", id);
         user.put("email",email);
@@ -49,10 +51,12 @@ public class UserDao {
         db.collection("Users")
                 .add(user)
                 .addOnSuccessListener(documentReference -> {
+
                     Intent intent=new Intent(context, HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 })
                 .addOnFailureListener(exception -> Toast.makeText(context, "You can't register because"+exception, Toast.LENGTH_SHORT).show());
+                registerDone=true;
     }
 }
